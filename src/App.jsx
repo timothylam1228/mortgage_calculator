@@ -183,6 +183,11 @@ const MortgageCalculator = () => {
     updateState({ amortization: year });
   };
 
+  const formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "CAD",
+  });
+
   return (
     <div id="mortgage-calculator" className="accordion-header">
       <div
@@ -311,8 +316,8 @@ const MortgageCalculator = () => {
         className={`accordion-content-preview${accordionOpen ? "-none" : ""} `}
       >
         <div style={{ width: "100%" }}>
-          <div>Price: {state.price}</div>
-          <div>Down Payment: {state.downPaymentAmount}</div>
+          <div>Price: {formatter.format(state.price)}</div>
+          <div>Down Payment: {formatter.format(state.downPaymentAmount)}</div>
           <div>Mortgage Rate: {state.rate}</div>
           <div>Payment Frequency: {state.paymentFrequency}</div>
         </div>
@@ -320,15 +325,14 @@ const MortgageCalculator = () => {
           style={{
             width: "100%",
             display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            alignItems: "start",
             fontSize: "2rem",
           }}
         >
-          <h3 style={{ fontWeight: "bold", alignItems: "center" }}>
+          <h3 style={{ fontWeight: "bold", alignItems: "start" }}>
             {`${state.paymentFrequency} Payment`}
             <br />
-            {state.monthlyPayment}
+            {formatter.format(state.monthlyPayment)}
           </h3>
         </div>
       </div>

@@ -1,6 +1,4 @@
 #mortgage-calculator {
-  width: "100%";
-  /* margin: auto; */
   padding: 20px;
   border: 1px solid #197fe6;
   border-radius: 5px;
@@ -17,7 +15,9 @@
 }
 
 h2 {
-  color: #197fe6;
+  color: #197fe6 !important;
+  font-weight: bold !important;
+  text-align: center; /* Center the heading */
 }
 
 #results {
@@ -75,13 +75,38 @@ body {
 .accordion-content-preview {
   display: none;
 }
-.mobile-open {
-  display: none;
-}
 
-/* Mobile view styles */
-.mobile-open {
-  display: block;
+/* Responsive styles for mobile view */
+@media (max-width: 768px) {
+  #mortgage-calculator {
+    padding: 10px;
+  }
+
+
+
+  label {
+    margin-bottom: 5px;
+  }
+
+  .accordion-content-preview {
+    flex-direction: column; /* Stack preview content on mobile */
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  .accordion-content {
+    padding: 5px;
+  }
+
+  .mobile-open {
+    display: block; /* Ensure accordion toggle is visible on small screens */
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+    color: #197fe6;
+  }
 }
 
 .table-column {
@@ -107,12 +132,11 @@ body {
 .accordion-content.active {
   display: block;
 }
+
 .accordion-content-preview {
   display: flex;
   align-items: center;
-}
-.accordion-content-preview-none {
-  display: none;
+  justify-content: space-between; /* Adjust for spacing between elements */
 }
 
 .flex-row {
@@ -120,7 +144,9 @@ body {
   align-items: center;
   margin-top: 5px;
   margin-bottom: 5px;
+  justify-content: space-between; /* Ensure space between label and input */
 }
+
 .items-center {
   align-items: center;
 }
