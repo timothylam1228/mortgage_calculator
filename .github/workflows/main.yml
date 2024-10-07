@@ -3,7 +3,7 @@ name: Build and Zip WordPress Plugin
 on:
   push:
     branches:
-      - main  # or whichever branch you want to trigger the workflow
+      - main  # or the branch you want to trigger the workflow
 
 jobs:
   build:
@@ -16,21 +16,21 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'  # Or your preferred Node.js version
+          node-version: '18'
 
       - name: Install Dependencies
         run: npm install
 
       - name: Build Project
-        run: npm run build  # Adjust this if you use a different build script
+        run: npm run build  # Build Vite project (outputs to dist)
 
       - name: Zip Plugin Folder
         run: |
           mkdir output
-          zip -r ./output/plugin-name.zip ./dist/
+          zip -r ./output/mortgage-calculator-plugin.zip ./dist/ ./mortgage-calculator.php
 
       - name: Upload ZIP File as an Artifact
         uses: actions/upload-artifact@v3
         with:
           name: plugin-zip
-          path: ./output/plugin-name.zip
+          path: ./output/mortgage-calculator-plugin.zip
