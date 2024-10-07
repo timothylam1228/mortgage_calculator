@@ -27,7 +27,7 @@ jobs:
       - name: Zip Plugin Folder
         run: |
           mkdir output
-          zip -r ./output/mortgage-calculator-plugin.zip ./dist/ ./mortgage-calculator.php
+          zip -r ./output/mortgage-calculator-plugin.zip ./dist/ ./index.php
 
       - name: Upload ZIP File as an Artifact
         uses: actions/upload-artifact@v3
