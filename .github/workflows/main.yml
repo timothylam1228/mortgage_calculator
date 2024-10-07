@@ -27,7 +27,7 @@ jobs:
       - name: Zip Plugin Folder
         run: |
           mkdir output
-          zip -r ./output/plugin-name.zip ./build/
+          zip -r ./output/plugin-name.zip ./dist/
 
       - name: Upload ZIP File as an Artifact
         uses: actions/upload-artifact@v3
