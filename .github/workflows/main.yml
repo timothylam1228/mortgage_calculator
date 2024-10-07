@@ -1,0 +1,36 @@
+name: Build and Zip WordPress Plugin
+
+on:
+  push:
+    branches:
+      - main  # or whichever branch you want to trigger the workflow
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'  # Or your preferred Node.js version
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Project
+        run: npm run build  # Adjust this if you use a different build script
+
+      - name: Zip Plugin Folder
+        run: |
+          mkdir output
+          zip -r ./output/plugin-name.zip ./build/
+
+      - name: Upload ZIP File as an Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: plugin-zip
+          path: ./output/plugin-name.zip
