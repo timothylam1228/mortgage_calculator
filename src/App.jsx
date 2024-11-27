@@ -317,7 +317,10 @@ const MortgageCalculator = () => {
       >
         <div style={{ width: "100%" }}>
           <div>Price: {formatter.format(state.price)}</div>
-          <div>Down Payment: {formatter.format(state.downPaymentAmount)}</div>
+          <div>
+            {`${state.downPaymentPercent}% `}Down Payment:{" "}
+            {formatter.format(state.downPaymentAmount)}
+          </div>
           <div>Mortgage Rate: {state.rate}</div>
           <div>Payment Frequency: {state.paymentFrequency}</div>
         </div>
@@ -330,7 +333,7 @@ const MortgageCalculator = () => {
           }}
         >
           <h3 style={{ fontWeight: "bold", alignItems: "start" }}>
-            {`${state.paymentFrequency} Payment`}
+            {`Expected ${state.paymentFrequency} Payment`}
             <br />
             {formatter.format(state.monthlyPayment)}
           </h3>
